@@ -38,17 +38,18 @@ public class AdventureProcessMethodMockTest {
 				bankInterface.processPayment(IBAN, 300);
 				this.result = PAYMENT_CONFIRMATION;
 
-				HotelInterface.reserveHotel(Type.SINGLE, AdventureProcessMethodMockTest.this.begin,
+				hotelInterface.reserveHotel(Type.SINGLE, AdventureProcessMethodMockTest.this.begin,
 						AdventureProcessMethodMockTest.this.end);
 				this.result = HOTEL_REFERENCE;
 
-				ActivityInterface.reserveActivity(AdventureProcessMethodMockTest.this.begin,
+				activityInterface.reserveActivity(AdventureProcessMethodMockTest.this.begin,
 						AdventureProcessMethodMockTest.this.end, 20);
 				this.result = ACTIVITY_REFERENCE;
 			}
 		};
 
-		Adventure adventure = new Adventure(this.broker, this.begin, this.end, 20, IBAN, 300);
+		Adventure adventure = new Adventure(this.broker, this.begin, this.end, 20, IBAN, 300, hotelInterface,
+				activityInterface);
 
 		adventure.process();
 

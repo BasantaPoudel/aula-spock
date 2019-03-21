@@ -5,7 +5,9 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import pt.ulisboa.tecnico.softeng.broker.interfaces.ActivityInterface;
 import pt.ulisboa.tecnico.softeng.broker.interfaces.BankInterface;
+import pt.ulisboa.tecnico.softeng.broker.interfaces.HotelInterface;
 
 public class AdventureConstructorMethodTest {
 	private Broker broker;
@@ -20,7 +22,9 @@ public class AdventureConstructorMethodTest {
 		LocalDate begin = new LocalDate(2016, 12, 19);
 		LocalDate end = new LocalDate(2016, 12, 21);
 
-		Adventure adventure = new Adventure(this.broker, begin, end, 20, "BK011234567", 300);
+		Adventure adventure = new Adventure(this.broker, begin, end, 20, "BK011234567", 300,
+				new HotelInterface(),
+				new ActivityInterface());
 
 		Assert.assertEquals(this.broker, adventure.getBroker());
 		Assert.assertEquals(begin, adventure.getBegin());
